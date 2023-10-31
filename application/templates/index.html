@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>CV Activity 02</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CV Activity 02</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#translation">Translation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#rotation">Rotation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#scaling">Scaling</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#shearing">Shearing</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid" >
+        <div class="row align-items-start">
+            <div class="col-7">
+                <div class="container" style="display: flex; justify-content: center; align-items: center; width: 60%; margin: auto; top: 7vh; transform: translate(0, -50%)} ">
+                    <img id="img" src="data:image/jpeg;base64,{{ img_data }}" style="width: 80%; height: auto; margin-top: 50px"/>
+                </div>
+                <div class="card" style="width: 50%; height: auto; margin: 100px auto;" >
+                    <div class="card-body" style="margin: 20px 50px">
+                        <h5 class="card-subtitle mb-2 text-muted">Submit your Image</h5>
+                        <h6 class="card-subtitle mb-4 text-muted">(.jpg, .jpeg, .png format only)</h6>
+                        <form method="post" action="/inputimg" enctype="multipart/form-data">
+                            <input class="form-control" type="file" id="imgfile" name="imgfile" />
+                            <button class="btn btn-primary mb-3" id="submit" style="margin-top: 10px;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5" style="max-height: 90vh; overflow-y: scroll">
+                <div id="translation" style="height: auto">Translation
+                    <div class="card" style="margin: 100px 100px;">
+                        <div class="card-body" style="margin: auto auto;">
+                            <h5 class="card-title">Translation</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"></h6>
+          
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary mb-3" id="translation">Translation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="rotation" style="height: auto">Rotation
+                    <div class="card" style="margin: 100px 100px;">
+                        <div class="card-body" style="margin: auto auto;">
+                            <h5 class="card-title">Rotation</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"></h6>
+          
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary mb-3"  id="rotation">Rotation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="scaling" style="height: auto">Scaling
+                    <div class="card" style="margin: 100px 100px;">
+                        <div class="card-body" style="margin: auto auto;">
+                            <h5 class="card-title">Scaling</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"></h6>
+          
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary mb-3" id="scaling">Scaling</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="shearing" style="height: auto">Shearing
+                    <div class="card" style="margin: 100px 100px;">
+                        <div class="card-body" style="margin: auto auto;">
+                            <h5 class="card-title">Shearing</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"></h6>
+          
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary mb-3" id="shearing">Shearing</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+
+      <script>
+        document.getElementById("translation").addEventListener("click", function () {
+        
+            var imgSrc = document.getElementById("img").src;
+  
+            fetch("/translation", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    img_data: imgSrc,
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              var img = data.img_data;
+              document.getElementById("img").src =
+                "data:image/jpeg;base64," + img;
+            });
+        });
+
+        document.getElementById("rotation").addEventListener("click", function () {
+        
+            var imgSrc = document.getElementById("img").src;
+  
+            fetch("/rotation", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    img_data: imgSrc,
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              var img = data.img_data;
+              document.getElementById("img").src =
+                "data:image/jpeg;base64," + img;
+            });
+        });
+        document.getElementById("scaling").addEventListener("click", function () {
+        
+            var imgSrc = document.getElementById("img").src;
+  
+            fetch("/scaling", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    img_data: imgSrc,
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              var img = data.img_data;
+              document.getElementById("img").src =
+                "data:image/jpeg;base64," + img;
+            });
+        });
+
+        document.getElementById("shearing").addEventListener("click", function () {
+        
+            var imgSrc = document.getElementById("img").src;
+  
+            fetch("/shearing", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    img_data: imgSrc,
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              var img = data.img_data;
+              document.getElementById("img").src =
+                "data:image/jpeg;base64," + img;
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

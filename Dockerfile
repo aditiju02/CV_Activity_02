@@ -1,5 +1,6 @@
 # Use the official Python image as the base image
-FROM python:3.11.6
+# FROM python:3.11.6
+FROM python:3.9
 
 ENV PYTHONUNBUFFERED 1
 

@@ -25,5 +25,6 @@ COPY . .
 EXPOSE 8080
 
 # Command to start the server
-CMD ["gunicorn", "-b", "8080", "run:app"]
+# CMD ["gunicorn", "-b", "8080", "run:app"]
+CMD ["python", "./run.py"]
 

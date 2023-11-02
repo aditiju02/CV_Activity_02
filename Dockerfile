@@ -6,21 +6,25 @@ ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
 WORKDIR /app/
+COPY . /app/
 
-RUN python -m venv /opt/venv
+# Update the PATH to include the venv's bin directory
+ENV PATH="/app/venv/bin:${PATH}"
 
-# Enable venv
-ENV PATH="/opt/venv/bin:${PATH}"
+# RUN python -m venv /opt/venv
 
-# Install gunicorn
-RUN pip install gunicorn
+# # Enable venv
+# ENV PATH="/opt/venv/bin:${PATH}"
 
-# Copy requirements file and install dependencies
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# # Install gunicorn
+# RUN pip install gunicorn
 
-# Copy the application files into the working directory
-COPY . .
+# # Copy requirements file and install dependencies
+# COPY requirements.txt requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# # Copy the application files into the working directory
+# COPY . .
 
 # Expose the server port
 EXPOSE 8080

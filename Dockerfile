@@ -4,7 +4,7 @@ FROM python:3.9
 
 # Set the working directory in the container
 WORKDIR /app/
-COPY . /app
+COPY . .
 
 # Update the PATH to include the venv's bin directory
 ENV PATH="/app/venv/bin:${PATH}"
@@ -18,8 +18,8 @@ ENV PATH="/app/venv/bin:${PATH}"
 # RUN pip install gunicorn
 
 # # Copy requirements file and install dependencies
-# COPY requirements.txt requirements.txt
-# RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # # Copy the application files into the working directory
 # COPY . .

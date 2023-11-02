@@ -7,7 +7,7 @@ WORKDIR /app/
 COPY . .
 
 # Update the PATH to include the venv's bin directory
-ENV PATH="/app/venv/bin:${PATH}"
+# ENV PATH="/app/venv/bin:${PATH}"
 
 RUN python -m venv /opt/venv
 

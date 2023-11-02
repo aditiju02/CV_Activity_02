@@ -1,13 +1,18 @@
 # Use the official Python image as the base image
 FROM python:3.11.6
+
 ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
 WORKDIR /app/
 
 RUN python -m venv /opt/venv
+
 # Enable venv
-ENV PATH="/venv/"
+ENV PATH="/opt/venv/bin:${PATH}"
+
+# Install gunicorn
+RUN pip install gunicorn
 
 # Copy requirements file and install dependencies
 COPY requirements.txt requirements.txt
@@ -21,3 +26,4 @@ EXPOSE 8080
 
 # Command to start the server
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "run:app"]
+

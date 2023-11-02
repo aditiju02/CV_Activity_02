@@ -4,12 +4,15 @@ FROM python:3.11.6
 # Set the working directory in the container
 WORKDIR /app
 
+# Copy requirements file and install dependencies
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copy the application files into the working directory
-COPY . /app
+COPY . .
 
-# Install the application dependencies
-RUN pip install -r requirements.txt
+# Expose the server port
+EXPOSE 8080
 
-# Define the entry point for the container
-#CMD ["flask", "run", "--host=0.0.0.0"]
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+# Command to start the server
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]

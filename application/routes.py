@@ -5,7 +5,7 @@ from PIL import Image #    pip install pillow
 import numpy as np
 import base64
 import io
-import cv2
+from cv2 import cv2
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 batchcount = 0

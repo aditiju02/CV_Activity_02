@@ -2,11 +2,9 @@
 # FROM python:3.11.6
 FROM python:3.9
 
-ENV PYTHONUNBUFFERED 1
-
 # Set the working directory in the container
 WORKDIR /app/
-COPY . /app/
+COPY . /app
 
 # Update the PATH to include the venv's bin directory
 ENV PATH="/app/venv/bin:${PATH}"

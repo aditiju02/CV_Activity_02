@@ -9,10 +9,10 @@ COPY . .
 # Update the PATH to include the venv's bin directory
 ENV PATH="/app/venv/bin:${PATH}"
 
-# RUN python -m venv /opt/venv
+RUN python -m venv /opt/venv
 
 # # Enable venv
-# ENV PATH="/opt/venv/bin:${PATH}"
+ENV PATH="/opt/venv/bin:${PATH}"
 
 # # Install gunicorn
 # RUN pip install gunicorn

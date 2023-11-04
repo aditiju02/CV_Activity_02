@@ -1,6 +1,5 @@
 from flask import json, jsonify, render_template, request, redirect, url_for, session, flash
 from application import app
-
 import cv2
 import numpy as np
 from PIL import Image #    pip install pillow

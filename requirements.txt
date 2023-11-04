@@ -8,6 +8,5 @@ MarkupSafe==2.1.3
 numpy==1.26.1
 opencv-contrib-python==4.8.1.78
 opencv-python==4.8.1.78
-opency-python-headless
 Pillow==10.1.0
 Werkzeug==3.0.1

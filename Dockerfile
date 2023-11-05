@@ -25,6 +25,6 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 # Command to start the server
-# CMD ["gunicorn", "-b", "8080", "run:app"]
-CMD ["python", "./run.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "run:app"]
+# CMD ["python", "./run.py"]
 

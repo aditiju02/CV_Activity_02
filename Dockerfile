@@ -12,7 +12,7 @@ RUN python -m venv /opt/env
 ENV PATH="/opt/env/bin:${PATH}"
 
 # # Install gunicorn
-RUN pip install gunicorn
+# RUN pip install gunicorn
 
 # # Copy requirements file and install dependencies
 COPY requirements.txt requirements.txt
@@ -25,6 +25,6 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 # Command to start the server
-CMD ["gunicorn", "-b", "8080", "run:app"]
-# CMD ["python3", "./run.py"]
+# CMD ["gunicorn", "-b", "8080", "run:app"]
+CMD ["python", "./run.py"]
 

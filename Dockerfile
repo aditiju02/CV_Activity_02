@@ -22,7 +22,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Add the 'cv2' directory to Python's module search path within the virtual environment
-RUN echo 'import sys; sys.path.append("/app/cv2")' >> /opt/env/lib/python3.9/site-packages/cv2_path.pth
+RUN echo 'import sys; sys.path.append("/app/cv2")' >> /opt/env/lib/python3.11/site-packages/cv2_path.pth
 
 # Expose the server port
 EXPOSE 8080

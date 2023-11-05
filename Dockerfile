@@ -12,7 +12,7 @@ RUN python -m venv /opt/env
 ENV PATH="/opt/env/bin:${PATH}"
 
 # # Install gunicorn
-# RUN pip install gunicorn
+RUN pip install gunicorn
 
 # # Copy requirements file and install dependencies
 COPY requirements.txt requirements.txt

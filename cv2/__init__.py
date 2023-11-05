@@ -176,3 +176,6 @@ def bootstrap():
             if DEBUG: print("Extra Python code for", submodule, "is loaded")
 
     if DEBUG: print('OpenCV loader: DONE')
+
+
+bootstrap()

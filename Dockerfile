@@ -1,6 +1,9 @@
 # Use the official Python image as the base image
 # FROM python:3.11.6
-FROM python:3.9
+# FROM python:3.9
+FROM python:3.11.6
+RUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0
+# RUN pip install --upgrade pip
 RUN pip install --upgrade pip
 # Set the working directory in the container
 WORKDIR /app/
@@ -24,7 +27,11 @@ RUN echo 'import sys; sys.path.append("/app/cv2")' >> /opt/env/lib/python3.9/sit
 # Expose the server port
 EXPOSE 8080
 
+
+FROM python:3.11.6\n\nRUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0\n\nRUN pip install --upgrade pip\n\n# Set the working directory in the container\nWORKDIR /app/\nCOPY . .\n\nRUN python -m venv /opt/env\n\n# Enable venv\nENV PATH=\
+
 # Command to start the server
 # CMD ["gunicorn", "-b", "0.0.0.0:8080", "run:app"]
 CMD ["python", "./run.py"]
 
+FROM python:3.11.6\n\nRUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0\n\nRUN pip install --upgrade pip\n\n# Set the working directory in the container\nWORKDIR /app/\nCOPY . .\n\nRUN python -m venv /opt/env\n\n# Enable venv\nENV PATH=\

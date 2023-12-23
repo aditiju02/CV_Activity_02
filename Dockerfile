@@ -21,4 +21,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 # Command to start the server
-CMD ["python", host="0.0.0.0", "./run.py"]
+CMD ["python3", host="0.0.0.0", "./run.py"]

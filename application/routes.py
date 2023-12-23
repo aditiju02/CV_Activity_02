@@ -1,11 +1,12 @@
 from flask import json, jsonify, render_template, request, redirect, url_for, session, flash
 from application import app
-import cv2
 
 from PIL import Image #    pip install pillow
 import numpy as np
 import base64
 import io
+import cv2
+
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 batchcount = 0
